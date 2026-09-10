@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKALA Premium</title>
+  <meta name="description" content="AKALA Premium — we get students into the top schools in the world. By invitation. Contact for more details." />
+
+  <meta property="og:title" content="AKALA Premium" />
+  <meta property="og:description" content="We get students into the top schools in the world." />
+  <meta property="og:image" content="hero-bg.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AKALA Premium" />
+  <meta name="twitter:description" content="We get students into the top schools in the world." />
+  <meta name="twitter:image" content="hero-bg.jpg" />
+  <meta name="theme-color" content="#1a1410" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231a1410'/><text x='50' y='71' font-family='Georgia,serif' font-weight='700' font-size='62' fill='%23f3f0eb' text-anchor='middle'>A</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f3f0eb;
+      --bg-warm-dark: #1a1410;
+      --text: #1a1714;
+      --muted: #847b72;
+      --white: #faf8f5;
+      --accent: #1a4d3e;
+      --border: #d4cfc7;
+      --max-w: 920px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-warm-dark);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 59px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @keyframes logo-appear {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+      animation: logo-appear 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .logo-akala {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .logo-premium {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.53rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-top: 0.18rem;
+    }
+
+    .nav-cta {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: #fff;
+      transition: width 0.25s ease;
+    }
+
+    .nav-cta:hover { color: #fff; }
+    .nav-cta:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      background-color: var(--bg-warm-dark);
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 6, 4, 0.55) 0%,
+        rgba(20, 13, 9, 0.35) 40%,
+        rgba(15, 10, 7, 0.75) 100%
+      );
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 2rem 3rem;
+    }
+
+    /* ── SCARCITY PILL ── */
+    .scarcity-pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.4rem 1.25rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: clamp(2.75rem, 9vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-wordmark .premium {
+      display: block;
+      font-size: clamp(0.62rem, 1.9vw, 0.95rem);
+      font-weight: 400;
+      letter-spacing: 0.55em;
+      text-indent: 0.55em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      margin-top: 1.1rem;
+    }
+
+    .hero-rule {
+      width: 64px;
+      height: 1px;
+      border: 0;
+      background: rgba(255,255,255,0.3);
+      margin: 2.25rem auto;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 3.4vw, 2.1rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.35;
+      max-width: min(540px, 100%);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── CTA ── */
+    .section-cta-wrap { margin-top: 2.75rem; }
+
+    .section-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--white);
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+    }
+
+    .section-cta svg { width: 15px; height: 15px; }
+
+    .section-cta:hover {
+      background: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── PROOF BAR ── */
+    .proof-bar {
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem 2.5rem;
+    }
+
+    .proof-bar-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.4rem;
+    }
+
+    .proof-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      width: 100%;
+      text-align: center;
+      line-height: 2;
+      margin-bottom: 0.25rem;
+    }
+
+    .proof-school {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      white-space: nowrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #141210;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.75rem 2rem 1.25rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      text-decoration: none;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .footer-logo .logo-akala { font-size: 1.25rem; }
+    .footer-logo .logo-premium { font-size: 0.5rem; }
+
+    .footer-contact {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1rem;
+    }
+
+    /* ── ENTRANCE ── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .rise { opacity: 0; animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .d1 { animation-delay: 0.15s; }
+    .d2 { animation-delay: 0.35s; }
+    .d3 { animation-delay: 0.60s; }
+    .d4 { animation-delay: 0.80s; }
+    .d5 { animation-delay: 1.00s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .nav-logo { animation: none; opacity: 1; }
+      html { scroll-behavior: auto; }
+    }
+
+    section, footer, nav { max-width: 100vw; overflow-x: hidden; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .nav-inner { padding: 0 1.25rem; }
+      .logo-akala { font-size: 1.2rem; }
+      .logo-premium { font-size: 0.48rem; letter-spacing: 0.22em; }
+      .hero-body { padding: 100px 1.25rem 2rem; }
+      .hero-rule { margin: 1.75rem auto; }
+      .hero-tagline { font-size: 1.2rem; line-height: 1.35; }
+      .scarcity-pill { font-size: 0.52rem; padding: 0.3rem 0.9rem; letter-spacing: 0.14em; margin-bottom: 1.25rem; }
+      .section-cta-wrap { margin-top: 2rem; }
+      .section-cta { font-size: 0.7rem; padding: 0.75rem 1.5rem; letter-spacing: 0.05em; }
+      .section-cta:hover { background: var(--white); color: var(--text); transform: none; }
+      .proof-bar { padding: 0 1.25rem 1.75rem; }
+      .proof-bar-inner { gap: 0.4rem 1rem; }
+      .proof-school { font-size: 0.8rem; }
+      .proof-label { font-size: 0.55rem; letter-spacing: 0.12em; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 0.75rem; }
+      .footer-logo { align-items: center; }
+      .footer-copy { font-size: 0.65rem; padding-top: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-akala">AKALA</span>
+        <span class="logo-premium">Premium</span>
+      </a>
+      <a class="nav-cta" href="mailto:Ori@goakala.com?subject=AKALA%20Premium%20%E2%80%94%20Enquiry">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-body">
+      <div class="scarcity-pill rise d1">By Invitation Only</div>
+
+      <h1 class="hero-wordmark rise d2">
+        AKALA
+        <span class="premium">Premium</span>
+      </h1>
+
+      <hr class="hero-rule rise d3" />
+
+      <p class="hero-tagline rise d3">
+        We get students into the top schools in the world.
+      </p>
+
+      <div class="section-cta-wrap rise d4">
+        <a class="section-cta"
+           href="mailto:Ori@goakala.com?subject=AKALA%20Premium%20%E2%80%94%20Enquiry">
+          Contact for more details
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="proof-bar rise d5">
+      <div class="proof-bar-inner">
+        <span class="proof-label">Harvard · Stanford · MIT · Oxford · Cambridge · Yale · Princeton</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">
+        <span class="logo-akala">AKALA</span>
+        <span class="logo-premium">Premium</span>
+      </a>
+      <a class="footer-contact" href="mailto:Ori@goakala.com?subject=AKALA%20Premium%20%E2%80%94%20Enquiry">Ori@goakala.com</a>
+    </div>
+    <div class="footer-copy">© 2026 AKALA Premium. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
