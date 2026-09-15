@@ -548,7 +548,7 @@
     }
 
     .schools {
-      max-width: 850px;
+      max-width: 1240px;
       margin: 0 auto;
       text-align: center;
     }
@@ -602,8 +602,8 @@
 
     .schools-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 3rem 2.5rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 3.5rem 3rem;
     }
 
     .school {
@@ -622,7 +622,7 @@
       transition: transform 0.35s ease;
     }
 
-    .school-wordmark img { max-width: 90%; }
+    .school-wordmark img { max-height: 72px; }
     .school:hover img { transform: scale(1.05); }
 
     /* ── PRIVATE ENGAGEMENT ── */
@@ -833,10 +833,18 @@
       .schools-eyebrow { font-size: 0.6rem; letter-spacing: 0.18em; margin-bottom: 0.75rem; }
       .schools-label { font-size: 1.05rem; margin-bottom: 2rem; }
       .schools-label br { display: none; }
-      .schools-grid { gap: 2rem 1.25rem; }
+      .schools-grid { grid-template-columns: repeat(6, 1fr); gap: 2rem 1rem; }
       .school { height: 88px; }
       .school img { max-height: 76px; }
+      .school-wordmark img { max-height: 56px; }
       #team { padding-bottom: 0; }
+    }
+
+    @media (max-width: 1100px) and (min-width: 769px) {
+      .schools-grid { grid-template-columns: repeat(6, 1fr); gap: 2.5rem 1.75rem; }
+      .school { height: 104px; }
+      .school img { max-height: 88px; }
+      .school-wordmark img { max-height: 62px; }
     }
 
     @media (max-width: 600px) {
@@ -844,7 +852,31 @@
       .team-circles { gap: 1rem; }
       .team-circle { width: 90px; height: 90px; }
       .team-cta { padding: 0.7rem 1.25rem; }
-      .schools-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+      /* Two rows preserved; the band swipes sideways so each logo stays legible.
+         Column flow settles the seals into row one and the wordmarks into row two. */
+      .schools-grid {
+        grid-template-columns: none;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-flow: column;
+        grid-auto-columns: 96px;
+        gap: 1.5rem 1.25rem;
+        justify-content: start;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        margin: 0 -1.25rem;
+        padding: 0 1.25rem 0.5rem;
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 1.25rem, #000 calc(100% - 2.75rem), transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0, #000 1.25rem, #000 calc(100% - 2.75rem), transparent 100%);
+      }
+
+      .schools-grid::-webkit-scrollbar { display: none; }
+
+      .school { height: 72px; scroll-snap-align: center; }
+      .school img { max-height: 64px; }
+      .school-wordmark img { max-height: 44px; }
     }
 
     @media (max-width: 390px) {
@@ -967,13 +999,17 @@
           <p class="schools-label fade-up">AKALA Premium has sent students <br>to Top 35 schools like</p>
           <div class="schools-grid fade-up">
             <div class="school"><img src="logos/harvard.png" alt="Harvard University" loading="lazy" /></div>
+            <div class="school school-wordmark"><img src="logos/yale.svg" alt="Yale University" loading="lazy" /></div>
             <div class="school"><img src="logos/stanford.png" alt="Stanford University" loading="lazy" /></div>
             <div class="school school-wordmark"><img src="logos/mit.png" alt="Massachusetts Institute of Technology" loading="lazy" /></div>
             <div class="school"><img src="logos/princeton.png" alt="Princeton University" loading="lazy" /></div>
+            <div class="school school-wordmark"><img src="logos/ucla.png" alt="UCLA" loading="lazy" /></div>
             <div class="school"><img src="logos/penn.png" alt="University of Pennsylvania" loading="lazy" /></div>
             <div class="school school-wordmark"><img src="logos/georgetown.png" alt="Georgetown University" loading="lazy" /></div>
+            <div class="school"><img src="logos/duke.png" alt="Duke University" loading="lazy" /></div>
             <div class="school school-wordmark"><img src="logos/usc.png" alt="University of Southern California" loading="lazy" /></div>
             <div class="school"><img src="logos/washington.svg" alt="University of Washington" loading="lazy" /></div>
+            <div class="school school-wordmark"><img src="logos/washu.png" alt="Washington University in St. Louis" loading="lazy" /></div>
           </div>
         </div>
     </div>
@@ -1006,7 +1042,7 @@
         <span class="cta-band-eyebrow">By Invitation Only</span>
         <h2 class="cta-band-headline">Every acceptance story starts with a conversation.</h2>
         <hr class="cta-band-rule" />
-        <p class="cta-band-sub">Meet with Perry to talk through your student's goals and see whether AKALA Premium is the right fit.</p>
+        <p class="cta-band-sub">Meet with the founders to talk through your student's goals and see whether AKALA Premium is the right fit.</p>
         <a href="https://calendly.com/akalaperry/free-consultation-with-perry-tg" class="team-cta">Request a Private Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
