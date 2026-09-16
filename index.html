@@ -625,6 +625,26 @@
     .school-wordmark img { max-height: 72px; }
     .school:hover img { transform: scale(1.05); }
 
+    /* Swipe indicator — only ever shown where the grid actually scrolls */
+    .schools-swipe {
+      display: none;
+      width: 84px;
+      height: 2px;
+      margin: 1.5rem auto 0;
+      background: rgba(138, 109, 59, 0.22);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .schools-swipe span {
+      display: block;
+      width: 40%;
+      height: 100%;
+      border-radius: 2px;
+      background: var(--brass);
+      transform-origin: left center;
+    }
+
     /* ── PRIVATE ENGAGEMENT ── */
     .engagement {
       max-width: 860px;
@@ -858,8 +878,8 @@
         grid-template-columns: none;
         grid-template-rows: repeat(2, auto);
         grid-auto-flow: column;
-        grid-auto-columns: 96px;
-        gap: 1.5rem 1.25rem;
+        grid-auto-columns: 116px;
+        gap: 1.25rem 0.875rem;
         justify-content: start;
         overflow-x: auto;
         overscroll-behavior-x: contain;
@@ -867,16 +887,21 @@
         scroll-snap-type: x proximity;
         scrollbar-width: none;
         margin: 0 -1.25rem;
-        padding: 0 1.25rem 0.5rem;
-        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 1.25rem, #000 calc(100% - 2.75rem), transparent 100%);
-        mask-image: linear-gradient(to right, transparent 0, #000 1.25rem, #000 calc(100% - 2.75rem), transparent 100%);
+        padding: 0 1.25rem 0.25rem;
+        /* Fade only the trailing edge, so the part-visible column still reads
+           as "there is more" rather than being masked out of existence. */
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 1.75rem), transparent 100%);
+        mask-image: linear-gradient(to right, #000 calc(100% - 1.75rem), transparent 100%);
       }
 
       .schools-grid::-webkit-scrollbar { display: none; }
 
-      .school { height: 72px; scroll-snap-align: center; }
-      .school img { max-height: 64px; }
-      .school-wordmark img { max-height: 44px; }
+      .school { height: 78px; scroll-snap-align: center; }
+      .school img { max-height: 70px; }
+      .school-wordmark img { max-height: 48px; }
+
+      .schools-swipe { display: block; }
+      .schools-band { padding-bottom: 3rem; }
     }
 
     @media (max-width: 390px) {
@@ -1011,6 +1036,7 @@
             <div class="school"><img src="logos/washington.svg" alt="University of Washington" loading="lazy" /></div>
             <div class="school school-wordmark"><img src="logos/washu.png" alt="Washington University in St. Louis" loading="lazy" /></div>
           </div>
+          <div class="schools-swipe" aria-hidden="true"><span></span></div>
         </div>
     </div>
 
@@ -1105,6 +1131,36 @@
       window.addEventListener('scroll', requestStrip, { passive: true });
       window.addEventListener('resize', requestStrip);
       updateStrip();
+    }
+
+    // Placements band — on phones the two rows swipe sideways, so show how far
+    // along the track you are and hide the indicator when nothing overflows
+    const schoolsGrid = document.querySelector('.schools-grid');
+    const schoolsSwipe = document.querySelector('.schools-swipe');
+    if (schoolsGrid && schoolsSwipe) {
+      const thumb = schoolsSwipe.querySelector('span');
+      const updateSwipe = () => {
+        const overflow = schoolsGrid.scrollWidth - schoolsGrid.clientWidth;
+        if (overflow < 8) {
+          schoolsSwipe.style.visibility = 'hidden';
+          schoolsGrid.removeAttribute('tabindex');
+          schoolsGrid.removeAttribute('role');
+          schoolsGrid.removeAttribute('aria-label');
+          return;
+        }
+        schoolsSwipe.style.visibility = 'visible';
+        // Only reachable by keyboard while it actually scrolls
+        schoolsGrid.setAttribute('tabindex', '0');
+        schoolsGrid.setAttribute('role', 'region');
+        schoolsGrid.setAttribute('aria-label', 'Schools our students have been admitted to');
+        const ratio = schoolsGrid.clientWidth / schoolsGrid.scrollWidth;
+        const progress = schoolsGrid.scrollLeft / overflow;
+        thumb.style.width = `${ratio * 100}%`;
+        thumb.style.transform = `translateX(${(progress * (1 - ratio) * 100) / ratio}%)`;
+      };
+      schoolsGrid.addEventListener('scroll', updateSwipe, { passive: true });
+      window.addEventListener('resize', updateSwipe);
+      updateSwipe();
     }
 
   </script>
