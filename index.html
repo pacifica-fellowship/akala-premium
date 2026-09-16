@@ -123,8 +123,9 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh;
-      min-height: 100svh;
+      --backed-h: 118px;
+      min-height: calc(100vh - var(--backed-h));
+      min-height: calc(100svh - var(--backed-h));
       background-color: var(--bg-warm-dark);
       background-image: url('hero-bg.jpg');
       background-size: cover;
@@ -356,7 +357,7 @@
     /* ── TEAM ── */
     #team {
       background: var(--bg);
-      padding: 8rem 2rem 5rem;
+      padding: 4.5rem 2rem 5rem;
     }
 
     .team-inner {
@@ -577,16 +578,6 @@
       height: 9px;
       border: 1.5px solid var(--brass);
       transform: rotate(45deg);
-    }
-
-    .schools-eyebrow {
-      display: block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 1rem;
     }
 
     .schools-label {
@@ -818,6 +809,7 @@
 
     /* ── NEW SECTIONS: RESPONSIVE (matches pacificafellowship.com) ── */
     @media (max-width: 768px) {
+      #hero { --backed-h: 62px; }
       .backed-bar-inner { gap: 0.4rem 0.75rem; padding: 0.85rem 1rem; }
       .backed-sep { display: none; }
       .backed-label { font-size: 0.6rem; letter-spacing: 0.1em; }
@@ -850,7 +842,6 @@
       .schools-band { margin: 0 -1.25rem; padding: 3.5rem 1.25rem 4rem; }
       .ornament { margin-bottom: 1.25rem; }
       .ornament::before, .ornament::after { width: 56px; }
-      .schools-eyebrow { font-size: 0.6rem; letter-spacing: 0.18em; margin-bottom: 0.75rem; }
       .schools-label { font-size: 1.05rem; margin-bottom: 2rem; }
       .schools-label br { display: none; }
       .schools-grid { grid-template-columns: repeat(6, 1fr); gap: 2rem 1rem; }
@@ -868,6 +859,7 @@
     }
 
     @media (max-width: 600px) {
+      #hero { --backed-h: 172px; }
       .backed-bar-inner { flex-direction: column; gap: 0.35rem; }
       .team-circles { gap: 1rem; }
       .team-circle { width: 90px; height: 90px; }
@@ -1021,7 +1013,6 @@
     <div class="schools-band">
         <div class="schools">
           <div class="ornament fade-up" aria-hidden="true"><span></span></div>
-          <span class="schools-eyebrow fade-up">Placements</span>
           <p class="schools-label fade-up">AKALA Premium has sent students <br>to Top 35 schools like</p>
           <div class="schools-grid fade-up">
             <div class="school"><img src="logos/harvard.png" alt="Harvard University" loading="lazy" /></div>
@@ -1045,7 +1036,6 @@
     <div class="team-inner">
       <div class="engagement">
         <div class="ornament fade-up" aria-hidden="true"><span></span></div>
-        <span class="schools-eyebrow fade-up">A Private Engagement</span>
         <h2 class="engagement-headline fade-up">Personal attention, reserved for a select few families</h2>
         <div class="engagement-grid fade-up">
           <div class="engagement-item">
